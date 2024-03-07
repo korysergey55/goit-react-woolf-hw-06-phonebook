@@ -1,0 +1,27 @@
+ .container{
+   max-width: 650px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  margin: 0 auto;
+  margin-top: 50px;
+  padding:  20px;
+
+  border-radius: 7px;
+  background-color: rgb(219, 219, 218);
+  }
+
+ .title{
+ display: block;
+ margin: 20px auto;
+ font-size: 30px;
+ text-align: center;
+ }
+ @media screen and (min-width:768px) {
+  .title{
+    font-size: 40px;
+  }
+ }
