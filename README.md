@@ -2,7 +2,7 @@ Phonebook-App-Redux Toolkit
 
 Tasks
 
-- Rebuild aplication using React Huks
+- Rebuild aplication using React Huks and Redux Toolkit
 
 - The application should consist of a form and a list of contacts. In the
   current step, implement adding the contact name and phone number and
