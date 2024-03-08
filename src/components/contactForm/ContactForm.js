@@ -1,18 +1,27 @@
 import { useState } from 'react'
 import styles from './styles.module.css'
 
+import { useDispatch, useSelector } from 'react-redux';
+import { createContact } from 'redax/slice/slice';
+
 const ININIAL_STATE = { name: '', number: '' }
 
-const ContactForm = ({ createNewContact }) => {
+const ContactForm = () => {
+  const dispatch = useDispatch()
   const [state, setState] = useState(ININIAL_STATE)
 
-  const formReset = () => {
-    setState(ININIAL_STATE)
+  const createNewContact = (data) => {
+    dispatch(createContact(data))
+    // setFilter('')
   }
 
   const handleChange = (evt) => {
     const { name, value } = evt.target
     setState((prev) => ({ ...prev, [name]: value }))
+  }
+
+  const formReset = () => {
+    setState(ININIAL_STATE)
   }
 
   const handleSubmit = (evt) => {

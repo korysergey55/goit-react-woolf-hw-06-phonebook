@@ -1,7 +1,16 @@
 import React from 'react'
 import styles from './styles.module.css'
+import { useDispatch, useSelector } from 'react-redux';
+import { deleteContact } from 'redax/slice/slice';
 
-const ContactList = ({ contacts, handleDelete }) => {
+const ContactList = () => {
+  const dispatch = useDispatch()
+  const { contacts } = useSelector((state) => state.contacts)
+
+  const handleDelete = (id) => {
+    dispatch(deleteContact(id))
+  }
+
   return (
     <div className={styles.container}>
       <ul className={styles.list} >
