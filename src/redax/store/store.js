@@ -1,5 +1,4 @@
 import { configureStore } from '@reduxjs/toolkit'
-// import { rootReducer } from 'redax/reducer/reducer'
 import { phonebookReducer } from 'redax/slice/slice'
 import { persistStore, persistReducer } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
@@ -7,6 +6,7 @@ import storage from 'redux-persist/lib/storage'
 const persistConfig = {
   key: 'contacts',
   storage,
+  blacklist: ['filter']
 }
 
 const persistedReducer = persistReducer(persistConfig, phonebookReducer)

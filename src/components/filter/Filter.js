@@ -1,6 +1,7 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFilter } from 'redax/slice/slice'
+
 import styles from './styles.module.css'
 
 const Filter = () => {
