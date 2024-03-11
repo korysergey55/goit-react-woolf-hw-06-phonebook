@@ -1,10 +1,10 @@
 import styles from './styles.module.css'
+import { useSelector } from 'react-redux';
 
 import ContactForm from '../contactForm/ContactForm';
 import ContactList from 'components/contactList/ContactList';
 import Filter from 'components/filter/Filter';
 
-import { useSelector } from 'react-redux';
 
 const App = () => {
   const { contacts } = useSelector((state) => state.contacts)
@@ -15,7 +15,7 @@ const App = () => {
       item.name
         .toLocaleLowerCase()
         .trim()
-        .includes(filter.toLocaleLowerCase().trim()))
+        .includes(filter?.toLocaleLowerCase().trim()))
   }
 
   const filteredComtacts = getFilteredContacts()

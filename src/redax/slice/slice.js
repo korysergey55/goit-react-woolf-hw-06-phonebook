@@ -33,19 +33,12 @@ const phonebookSlice = createSlice({
       })
     },
 
-    setContacts: (state, { payload }) => {
-      state.contacts = [...payload]
-    },
-
     setFilter: (state, { payload }) => {
       state.filter = payload
     },
 
     resetFilter: (state) => {
       state.filter = ''
-    },
-    setEditedContact: (state, { payload }) => {
-      state.editedContact = state.contacts.find((item) => (item.id === payload))
     },
   },
 })
