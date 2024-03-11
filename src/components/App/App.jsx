@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react'
 import styles from './styles.module.css'
 
 import ContactForm from '../contactForm/ContactForm';
@@ -9,25 +8,7 @@ import { useSelector } from 'react-redux';
 
 const App = () => {
   const { contacts } = useSelector((state) => state.contacts)
-  const [filter, setFilter] = useState('')
-
-  // const getLocalData = () => {
-  //   const localData = localStorage.getItem('contacts')
-  //   if (localData) {
-  //     return JSON.parse(localData)
-  //   }
-  //   return []
-  // }
-  // const [contacts, setContacts] = useState(() => getLocalData())
-
-  // useEffect(() => {
-  //   localStorage.setItem('contacts', JSON.stringify(contacts))
-  // }, [contacts])
-
-  const handleFilter = (evt) => {
-    setFilter(evt.target.value)
-  }
-
+  const filter = useSelector((state) => state.contacts.filter)
 
   const getFilteredContacts = () => {
     return contacts?.filter((item) =>
@@ -46,9 +27,7 @@ const App = () => {
       <ContactForm />
 
       <h1 className={styles.title}>Contacts</h1>
-      <Filter
-        filter={filter}
-        handleFilter={handleFilter} />
+      <Filter />
 
       {filteredComtacts.length > 0 && < ContactList />}
 

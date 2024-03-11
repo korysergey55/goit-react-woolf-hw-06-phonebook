@@ -1,7 +1,16 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setFilter } from 'redax/slice/slice'
 import styles from './styles.module.css'
 
-const Filter = ({ filter, handleFilter }) => {
+const Filter = () => {
+  const dispatch = useDispatch()
+  const { filter } = useSelector((state) => state.contacts.filter)
+
+  const handleFilter = (evt) => {
+    dispatch(setFilter(evt.target.value))
+  }
+
   return (
     <div className={styles.mainContainer} >
       <div className={styles.inputContainer}>

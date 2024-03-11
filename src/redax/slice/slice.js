@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 const initialState = {
   contacts: [],
-  filter: ''
+  filter: '',
 }
 
 const phonebookSlice = createSlice({
@@ -11,13 +11,13 @@ const phonebookSlice = createSlice({
   initialState,
   reducers: {
     createContact: (state, { payload }) => {
-      if (state.contacts.some((contact) => contact.name.toLocaleLowerCase() === payload.name.toLocaleLowerCase())) {
+      if (state.contacts?.some((contact) => contact.name.toLocaleLowerCase() === payload.name.toLocaleLowerCase())) {
         toast.error(`This Name - ${payload.name} already exist!`, {
           theme: 'colored',
         })
         return;
       }
-      if (state.contacts.some((contact) => contact.number === payload.number)) {
+      if (state.contacts?.some((contact) => contact.number === payload.number)) {
         toast.error(`This Number - ${payload.number} already exist!`, {
           theme: 'colored',
         })
@@ -36,8 +36,19 @@ const phonebookSlice = createSlice({
     setContacts: (state, { payload }) => {
       state.contacts = [...payload]
     },
+
+    setFilter: (state, { payload }) => {
+      state.filter = payload
+    },
+
+    resetFilter: (state) => {
+      state.filter = ''
+    },
+    setEditedContact: (state, { payload }) => {
+      state.editedContact = state.contacts.find((item) => (item.id === payload))
+    },
   },
 })
-export const { createContact, deleteContact, setContacts } = phonebookSlice.actions
+export const { createContact, deleteContact, setContacts, setFilter, resetFilter } = phonebookSlice.actions
 export const phonebookReducer = phonebookSlice.reducer
 

@@ -1,18 +1,16 @@
 import { useState } from 'react'
 import styles from './styles.module.css'
 
-import { useDispatch, useSelector } from 'react-redux';
-import { createContact } from 'redax/slice/slice';
-
-const ININIAL_STATE = { name: '', number: '' }
+import { useDispatch } from 'react-redux';
+import { createContact, resetFilter } from 'redax/slice/slice';
 
 const ContactForm = () => {
   const dispatch = useDispatch()
-  const [state, setState] = useState(ININIAL_STATE)
+  const [state, setState] = useState({ name: '', number: '' })
 
   const createNewContact = (data) => {
     dispatch(createContact(data))
-    // setFilter('')
+    dispatch(resetFilter())
   }
 
   const handleChange = (evt) => {
@@ -21,7 +19,7 @@ const ContactForm = () => {
   }
 
   const formReset = () => {
-    setState(ININIAL_STATE)
+    setState({ name: '', number: '' })
   }
 
   const handleSubmit = (evt) => {
@@ -65,7 +63,7 @@ const ContactForm = () => {
         className={styles.button}
         type='submit'
         htmlFor='contactForm'>
-        Add contact
+        {'Add contact'}
       </button>
     </form>
   );
