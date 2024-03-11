@@ -1,12 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redax/slice/slice';
+import { getContacts } from 'redax/selectors/selectors';
 
 import { toast } from 'react-toastify';
 import styles from './styles.module.css'
 
 const ContactList = () => {
   const dispatch = useDispatch()
-  const { contacts } = useSelector((state) => state.contacts)
+  const contacts = useSelector(getContacts)
 
   const handleDelete = (id) => {
     dispatch(deleteContact(id))

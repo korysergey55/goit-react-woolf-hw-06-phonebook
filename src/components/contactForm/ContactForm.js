@@ -5,11 +5,12 @@ import { createContact, resetFilter } from 'redax/slice/slice';
 
 import { toast } from 'react-toastify';
 import styles from './styles.module.css'
+import { getContacts } from 'redax/selectors/selectors';
 
 
 const ContactForm = () => {
   const dispatch = useDispatch()
-  const { contacts } = useSelector((state) => state.contacts)
+  const contacts = useSelector(getContacts)
   const [state, setState] = useState({ name: '', number: '' })
 
   const createNewContact = (data) => {

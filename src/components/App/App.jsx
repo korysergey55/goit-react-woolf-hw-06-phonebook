@@ -4,11 +4,11 @@ import { useSelector } from 'react-redux';
 import ContactForm from '../contactForm/ContactForm';
 import ContactList from 'components/contactList/ContactList';
 import Filter from 'components/filter/Filter';
-
+import { getContacts, GetFilter } from 'redax/selectors/selectors';
 
 const App = () => {
-  const { contacts } = useSelector((state) => state.contacts)
-  const filter = useSelector((state) => state.contacts.filter)
+  const contacts = useSelector(getContacts)
+  const filter = useSelector(GetFilter)
 
   const getFilteredContacts = () => {
     return contacts?.filter((item) =>
@@ -19,6 +19,7 @@ const App = () => {
   }
 
   const filteredComtacts = getFilteredContacts()
+
 
   return (
     <div className={styles.container} >

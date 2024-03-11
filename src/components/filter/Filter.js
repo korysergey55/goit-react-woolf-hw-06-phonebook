@@ -1,12 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { GetFilter } from 'redax/selectors/selectors'
 import { setFilter } from 'redax/slice/slice'
+
 
 import styles from './styles.module.css'
 
 const Filter = () => {
   const dispatch = useDispatch()
-  const { filter } = useSelector((state) => state.contacts.filter)
+  const filter = useSelector(GetFilter)
 
   const handleFilter = (evt) => {
     dispatch(setFilter(evt.target.value))
