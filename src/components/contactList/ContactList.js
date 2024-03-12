@@ -1,13 +1,13 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { deleteContact } from 'redax/slice/slice';
-import { getContacts } from 'redax/selectors/selectors';
+import { getFilteredContacts } from 'redax/selectors/selectors';
 
 import { toast } from 'react-toastify';
 import styles from './styles.module.css'
 
 const ContactList = () => {
   const dispatch = useDispatch()
-  const contacts = useSelector(getContacts)
+  const filteredContacts = useSelector(getFilteredContacts)
 
   const handleDelete = (id) => {
     dispatch(deleteContact(id))
@@ -19,7 +19,7 @@ const ContactList = () => {
   return (
     <div className={styles.container}>
       <ul className={styles.list} >
-        {contacts?.map((item) => (
+        {filteredContacts?.map((item) => (
           <li className={styles.item} key={item.id}>
             <p className={styles.text}> {item.name}: {item.number}</p>
             <button

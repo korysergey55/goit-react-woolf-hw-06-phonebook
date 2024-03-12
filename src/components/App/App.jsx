@@ -1,25 +1,13 @@
 import styles from './styles.module.css'
 import { useSelector } from 'react-redux';
+import { getFilteredContacts } from 'redax/selectors/selectors';
 
 import ContactForm from '../contactForm/ContactForm';
 import ContactList from 'components/contactList/ContactList';
 import Filter from 'components/filter/Filter';
-import { getContacts, GetFilter } from 'redax/selectors/selectors';
 
 const App = () => {
-  const contacts = useSelector(getContacts)
-  const filter = useSelector(GetFilter)
-
-  const getFilteredContacts = () => {
-    return contacts?.filter((item) =>
-      item.name
-        .toLocaleLowerCase()
-        .trim()
-        .includes(filter?.toLocaleLowerCase().trim()))
-  }
-
-  const filteredComtacts = getFilteredContacts()
-
+  const filteredContacts = useSelector(getFilteredContacts)
 
   return (
     <div className={styles.container} >
@@ -30,7 +18,7 @@ const App = () => {
       <h1 className={styles.title}>Contacts</h1>
       <Filter />
 
-      {filteredComtacts.length > 0 && < ContactList />}
+      {filteredContacts.length > 0 && < ContactList />}
 
     </div>
   );

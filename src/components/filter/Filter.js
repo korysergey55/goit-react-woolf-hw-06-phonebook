@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { GetFilter } from 'redax/selectors/selectors'
+import { getFilter } from 'redax/selectors/selectors'
 import { setFilter } from 'redax/slice/slice'
 
 
@@ -8,7 +8,7 @@ import styles from './styles.module.css'
 
 const Filter = () => {
   const dispatch = useDispatch()
-  const filter = useSelector(GetFilter)
+  const filter = useSelector(getFilter)
 
   const handleFilter = (evt) => {
     dispatch(setFilter(evt.target.value))
